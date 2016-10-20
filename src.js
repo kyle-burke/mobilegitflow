@@ -61,12 +61,12 @@ featureBranch1.merge(develop);
 
 var nightly = gitgraph.branch({parentBranch: develop, name: "nightly", column: nightlyCol});
 
-develop.merge(nightly, 'Jenkins merges develop into nightly at the end of every day');
+develop.merge(nightly, 'Jenkins merges `develop` into `nightly` at the end of every day');
 
 var beta = gitgraph.branch({parentBranch: master, name: "beta", column: betaCol});
 
-nightly.merge(beta, "Jenkins merges nightly into beta every week/sprint, and tells fastlane to generate builds for Testflight/Fabric");
+nightly.merge(beta, "Jenkins merges `nightly` into `beta` every week/sprint, and tells fastlane to generate builds for Testflight/Fabric");
 
-beta.merge(master, "manual trigger to Jenkins merges beta into master");
+beta.merge(master, "manual trigger to Jenkins merges `beta` into `master`");
 
 master.commit({message:"Tag triggers release, Jenkins tells fastlane to generate builds for App/Play stores",tag:"v1.0.0",tagColor:'gray'});
